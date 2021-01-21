@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.jwtuaa.mapper.OauthCodeMapper">
+  <resultMap id="BaseResultMap" type="com.mshcc.cloud.jwtuaa.model.OauthCode">
+    <!--@mbg.generated-->
+    <!--@Table oauth_code-->
+    <id column="id" property="id" />
+    <result column="create_time" property="createTime" />
+    <result column="code" property="code" />
+    <result column="authentication" property="authentication" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, create_time, code, authentication
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from oauth_code
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from oauth_code
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.OauthCode" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into oauth_code (create_time, code, authentication)
+    values (#{createTime}, #{code}, #{authentication})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.OauthCode" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into oauth_code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="authentication != null">
+        authentication,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="code != null">
+        #{code},
+      </if>
+      <if test="authentication != null">
+        #{authentication},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.jwtuaa.model.OauthCode">
+    <!--@mbg.generated-->
+    update oauth_code
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="code != null">
+        code = #{code},
+      </if>
+      <if test="authentication != null">
+        authentication = #{authentication},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.jwtuaa.model.OauthCode">
+    <!--@mbg.generated-->
+    update oauth_code
+    set create_time = #{createTime},
+      code = #{code},
+      authentication = #{authentication}
+    where id = #{id}
+  </update>
+</mapper>

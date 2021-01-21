@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.jwtuaa.mapper.TUserMapper">
+    <resultMap id="BaseResultMap" type="com.mshcc.cloud.jwtuaa.model.TUser">
+        <!--@mbg.generated-->
+        <!--@Table t_user-->
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="fullname" property="fullname"/>
+        <result column="mobile" property="mobile"/>
+        <result column="mail" property="mail"/>
+        <result column="gender" property="gender"/>
+        <result column="create_time" property="createTime"/>
+        <result column="status" property="status"/>
+        <result column="last_login" property="lastLogin"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, username, `password`, fullname, mobile, mail, gender, create_time, `status`,
+        last_login
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from t_user
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.TUser"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_user (username, `password`, fullname, mobile, mail, gender, create_time,
+                            `status`, last_login)
+        values (#{username}, #{password}, #{fullname}, #{mobile}, #{mail}, #{gender}, #{createTime},
+                #{status}, #{lastLogin})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.TUser"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="fullname != null">
+                fullname,
+            </if>
+            <if test="mobile != null">
+                mobile,
+            </if>
+            <if test="mail != null">
+                mail,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="lastLogin != null">
+                last_login,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="password != null">
+                #{password},
+            </if>
+            <if test="fullname != null">
+                #{fullname},
+            </if>
+            <if test="mobile != null">
+                #{mobile},
+            </if>
+            <if test="mail != null">
+                #{mail},
+            </if>
+            <if test="gender != null">
+                #{gender},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="lastLogin != null">
+                #{lastLogin},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.jwtuaa.model.TUser">
+        <!--@mbg.generated-->
+        update t_user
+        <set>
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="password != null">
+                `password` = #{password},
+            </if>
+            <if test="fullname != null">
+                fullname = #{fullname},
+            </if>
+            <if test="mobile != null">
+                mobile = #{mobile},
+            </if>
+            <if test="mail != null">
+                mail = #{mail},
+            </if>
+            <if test="gender != null">
+                gender = #{gender},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="status != null">
+                `status` = #{status},
+            </if>
+            <if test="lastLogin != null">
+                last_login = #{lastLogin},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.jwtuaa.model.TUser">
+        <!--@mbg.generated-->
+        update t_user
+        set username    = #{username},
+            `password`  = #{password},
+            fullname    = #{fullname},
+            mobile      = #{mobile},
+            mail        = #{mail},
+            gender      = #{gender},
+            create_time = #{createTime},
+            `status`    = #{status},
+            last_login  = #{lastLogin}
+        where id = #{id}
+    </update>
+
+    <select id="findByName" parameterType="string" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where username = #{username}
+        limit 1
+    </select>
+</mapper>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mshcc</groupId>
+    <artifactId>mshcc_cloud_cli</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>mshcc-jwt-uaa</module>
+        <module>mshcc-gateway</module>
+        <module>mshcc-back</module>
+        <module>mshcc-log</module>
+        <module>mshcc-monitor</module>
+        <module>mshcc-file</module>
+        <module>mshcc-mail</module>
+    </modules>
+</project>

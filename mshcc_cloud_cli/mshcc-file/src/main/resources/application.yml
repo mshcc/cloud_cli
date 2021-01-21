@@ -1,0 +1,11 @@
+spring:
+  servlet:
+    multipart:
+      max-request-size: 800MB
+      max-file-size: 20MB
+file:
+  path:
+    ROOT_PATH: D:\code\idea_workplace\mshcc_cloud_cli\mshcc-file\src\main\resources\
+    IMAGE_PATH: images
+    MARKDOWN_PATH: markdown
+    OTHERS_PATH: other

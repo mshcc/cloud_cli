@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.mail.mapper.MailAttachmenMapper">
+  <resultMap id="BaseResultMap" type="com.mshcc.cloud.mail.model.MailAttachmen">
+    <!--@mbg.generated-->
+    <!--@Table mail_attachmen-->
+    <id column="id" property="id" />
+    <result column="record_id" property="recordId" />
+    <result column="template_id" property="templateId" />
+    <result column="attachmen_name" property="attachmenName" />
+    <result column="attachmen_url" property="attachmenUrl" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, record_id, template_id, attachmen_name, attachmen_url
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from mail_attachmen
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from mail_attachmen
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailAttachmen" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_attachmen (record_id, template_id, attachmen_name, attachmen_url)
+    values (#{recordId}, #{templateId}, #{attachmenName}, #{attachmenUrl})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailAttachmen" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_attachmen
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        record_id,
+      </if>
+      <if test="templateId != null">
+        template_id,
+      </if>
+      <if test="attachmenName != null">
+        attachmen_name,
+      </if>
+      <if test="attachmenUrl != null">
+        attachmen_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId},
+      </if>
+      <if test="templateId != null">
+        #{templateId},
+      </if>
+      <if test="attachmenName != null">
+        #{attachmenName},
+      </if>
+      <if test="attachmenUrl != null">
+        #{attachmenUrl},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.mail.model.MailAttachmen">
+    <!--@mbg.generated-->
+    update mail_attachmen
+    <set>
+      <if test="recordId != null">
+        record_id = #{recordId},
+      </if>
+      <if test="templateId != null">
+        template_id = #{templateId},
+      </if>
+      <if test="attachmenName != null">
+        attachmen_name = #{attachmenName},
+      </if>
+      <if test="attachmenUrl != null">
+        attachmen_url = #{attachmenUrl},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.mail.model.MailAttachmen">
+    <!--@mbg.generated-->
+    update mail_attachmen
+    set record_id = #{recordId},
+      template_id = #{templateId},
+      attachmen_name = #{attachmenName},
+      attachmen_url = #{attachmenUrl}
+    where id = #{id}
+  </update>
+</mapper>

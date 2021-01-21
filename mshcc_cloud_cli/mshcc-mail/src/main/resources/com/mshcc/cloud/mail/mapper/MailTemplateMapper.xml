@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.mail.mapper.MailTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.mshcc.cloud.mail.model.MailTemplate">
+    <!--@mbg.generated-->
+    <!--@Table mail_template-->
+    <id column="id" property="id" />
+    <result column="template_name" property="templateName" />
+    <result column="template_sender" property="templateSender" />
+    <result column="template_title" property="templateTitle" />
+    <result column="template_text" property="templateText" />
+    <result column="create_time" property="createTime" />
+    <result column="creator" property="creator" />
+    <result column="template_status" property="templateStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, template_name, template_sender, template_title, template_text, create_time, creator, 
+    template_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from mail_template
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from mail_template
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailTemplate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_template (template_name, template_sender, template_title, template_text, create_time, 
+      creator, template_status)
+    values (#{templateName}, #{templateSender}, #{templateTitle}, #{templateText}, #{createTime}, 
+      #{creator}, #{templateStatus})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailTemplate" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="templateName != null">
+        template_name,
+      </if>
+      <if test="templateSender != null">
+        template_sender,
+      </if>
+      <if test="templateTitle != null">
+        template_title,
+      </if>
+      <if test="templateText != null">
+        template_text,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="templateStatus != null">
+        template_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="templateName != null">
+        #{templateName},
+      </if>
+      <if test="templateSender != null">
+        #{templateSender},
+      </if>
+      <if test="templateTitle != null">
+        #{templateTitle},
+      </if>
+      <if test="templateText != null">
+        #{templateText},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="creator != null">
+        #{creator},
+      </if>
+      <if test="templateStatus != null">
+        #{templateStatus},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.mail.model.MailTemplate">
+    <!--@mbg.generated-->
+    update mail_template
+    <set>
+      <if test="templateName != null">
+        template_name = #{templateName},
+      </if>
+      <if test="templateSender != null">
+        template_sender = #{templateSender},
+      </if>
+      <if test="templateTitle != null">
+        template_title = #{templateTitle},
+      </if>
+      <if test="templateText != null">
+        template_text = #{templateText},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="creator != null">
+        creator = #{creator},
+      </if>
+      <if test="templateStatus != null">
+        template_status = #{templateStatus},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.mail.model.MailTemplate">
+    <!--@mbg.generated-->
+    update mail_template
+    set template_name = #{templateName},
+      template_sender = #{templateSender},
+      template_title = #{templateTitle},
+      template_text = #{templateText},
+      create_time = #{createTime},
+      creator = #{creator},
+      template_status = #{templateStatus}
+    where id = #{id}
+  </update>
+</mapper>

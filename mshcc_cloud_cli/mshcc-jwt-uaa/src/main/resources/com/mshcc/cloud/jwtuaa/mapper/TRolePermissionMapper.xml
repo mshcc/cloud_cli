@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.jwtuaa.mapper.TRolePermissionMapper">
+    <resultMap id="BaseResultMap" type="com.mshcc.cloud.jwtuaa.model.TRolePermission">
+        <!--@mbg.generated-->
+        <!--@Table t_role_permission-->
+        <id column="id" property="id"/>
+        <result column="role_id" property="roleId"/>
+        <result column="permission_id" property="permissionId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="creator" property="creator"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, role_id, permission_id, create_time, creator
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from t_role_permission
+        where id = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete
+        from t_role_permission
+        where id = #{id}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.TRolePermission"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_role_permission (role_id, permission_id, create_time, creator)
+        values (#{roleId}, #{permissionId}, #{createTime}, #{creator})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.mshcc.cloud.jwtuaa.model.TRolePermission" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into t_role_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                role_id,
+            </if>
+            <if test="permissionId != null">
+                permission_id,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="roleId != null">
+                #{roleId},
+            </if>
+            <if test="permissionId != null">
+                #{permissionId},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="creator != null">
+                #{creator},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.jwtuaa.model.TRolePermission">
+        <!--@mbg.generated-->
+        update t_role_permission
+        <set>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
+            <if test="permissionId != null">
+                permission_id = #{permissionId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="creator != null">
+                creator = #{creator},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.jwtuaa.model.TRolePermission">
+        <!--@mbg.generated-->
+        update t_role_permission
+        set role_id       = #{roleId},
+            permission_id = #{permissionId},
+            create_time   = #{createTime},
+            creator       = #{creator}
+        where id = #{id}
+    </update>
+
+    <select id="getPermissionsByRole" resultType="java.lang.Integer" parameterType="list">
+        select permission_id
+        from t_role_permission
+                where role_id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+</mapper>

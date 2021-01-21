@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.jwtuaa.mapper.TUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.mshcc.cloud.jwtuaa.model.TUserRole">
+    <!--@mbg.generated-->
+    <!--@Table t_user_role-->
+    <id column="id" property="id" />
+    <result column="user_id" property="userId" />
+    <result column="role_id" property="roleId" />
+    <result column="create_time" property="createTime" />
+    <result column="creator" property="creator" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, role_id, create_time, creator
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_role
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_user_role
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.TUserRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user_role (user_id, role_id, create_time, creator)
+    values (#{userId}, #{roleId}, #{createTime}, #{creator})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.jwtuaa.model.TUserRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId},
+      </if>
+      <if test="roleId != null">
+        #{roleId},
+      </if>
+      <if test="createTime != null">
+        #{createTime},
+      </if>
+      <if test="creator != null">
+        #{creator},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.jwtuaa.model.TUserRole">
+    <!--@mbg.generated-->
+    update t_user_role
+    <set>
+      <if test="userId != null">
+        user_id = #{userId},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime},
+      </if>
+      <if test="creator != null">
+        creator = #{creator},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.jwtuaa.model.TUserRole">
+    <!--@mbg.generated-->
+    update t_user_role
+    set user_id = #{userId},
+      role_id = #{roleId},
+      create_time = #{createTime},
+      creator = #{creator}
+    where id = #{id}
+  </update>
+
+  <select id="getRolesByUser" resultType="java.lang.Integer" parameterType="int">
+    select role_id
+    from t_user_role
+    where user_id = #{userId}
+  </select>
+</mapper>

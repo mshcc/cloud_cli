@@ -1,0 +1,44 @@
+spring:
+  thymeleaf:
+    enabled: true  #开启thymeleaf视图解析
+    encoding: utf-8  #编码
+    prefix: classpath:/templates/  #前缀
+    cache: false  #是否使用缓存
+    mode: HTML  #严格的HTML语法模式
+    suffix: .html  #后缀名
+  mail:
+    host: smtp.163.com
+    username: mshccm@163.com
+    password: FZGDKEQHCXFKUYQU
+    properties:
+      mail:
+        smtp:
+          # 启动ssl
+          ssl:
+            enable: true
+          # 启动tls
+          starttls:
+            enable: true
+            required: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+  application:
+    name: mshcc_mail_service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.52.131:8848
+        cluster-name: MyCluster
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    username: root
+    password: root123
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url:  jdbc:mysql://116.63.144.75 :3306/mshcc_cloud?useUnicode=true&useSSL=false
+
+server:
+  port: 8190
+  servlet:
+    context-path: /mail

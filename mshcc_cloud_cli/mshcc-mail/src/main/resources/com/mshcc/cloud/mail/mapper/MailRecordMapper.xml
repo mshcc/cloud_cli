@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mshcc.cloud.mail.mapper.MailRecordMapper">
+  <resultMap id="BaseResultMap" type="com.mshcc.cloud.mail.model.MailRecord">
+    <!--@mbg.generated-->
+    <!--@Table mail_record-->
+    <id column="id" property="id" />
+    <result column="sender" property="sender" />
+    <result column="recipient" property="recipient" />
+    <result column="title" property="title" />
+    <result column="text" property="text" />
+    <result column="send_time" property="sendTime" />
+    <result column="success" property="success" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, sender, recipient, title, `text`, send_time, success
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from mail_record
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from mail_record
+    where id = #{id}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_record (sender, recipient, title, `text`, send_time, success)
+    values (#{sender}, #{recipient}, #{title}, #{text}, #{sendTime}, #{success})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mshcc.cloud.mail.model.MailRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into mail_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sender != null">
+        sender,
+      </if>
+      <if test="recipient != null">
+        recipient,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="text != null">
+        `text`,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+      <if test="success != null">
+        success,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sender != null">
+        #{sender},
+      </if>
+      <if test="recipient != null">
+        #{recipient},
+      </if>
+      <if test="title != null">
+        #{title},
+      </if>
+      <if test="text != null">
+        #{text},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime},
+      </if>
+      <if test="success != null">
+        #{success},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mshcc.cloud.mail.model.MailRecord">
+    <!--@mbg.generated-->
+    update mail_record
+    <set>
+      <if test="sender != null">
+        sender = #{sender},
+      </if>
+      <if test="recipient != null">
+        recipient = #{recipient},
+      </if>
+      <if test="title != null">
+        title = #{title},
+      </if>
+      <if test="text != null">
+        `text` = #{text},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime},
+      </if>
+      <if test="success != null">
+        success = #{success},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mshcc.cloud.mail.model.MailRecord">
+    <!--@mbg.generated-->
+    update mail_record
+    set sender = #{sender},
+      recipient = #{recipient},
+      title = #{title},
+      `text` = #{text},
+      send_time = #{sendTime},
+      success = #{success}
+    where id = #{id}
+  </update>
+</mapper>
